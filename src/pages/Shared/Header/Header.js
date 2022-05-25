@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
 import auth from "../../../firebase/firebase.init";
+import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -9,25 +9,25 @@ const Header = () => {
   const menuItems = (
     <>
       <li>
-        <Link to="/home">HOME</Link>
+        <ActiveLink to="/home">HOME</ActiveLink>
       </li>
       <li tabIndex="0">
-        <Link to="/blogs">BLOGS</Link>
+        <ActiveLink to="/blogs">BLOGS</ActiveLink>
       </li>
 
       {user && (
         <li>
-          <Link to="/dashboard">DASHBOARD</Link>
+          <ActiveLink to="/dashboard">DASHBOARD</ActiveLink>
         </li>
       )}
 
       {!user && (
         <>
           <li>
-            <Link to="/login">LOGIN</Link>
+            <ActiveLink to="/login">LOGIN</ActiveLink>
           </li>
           <li>
-            <Link to="/signup">SIGN UP</Link>
+            <ActiveLink to="/signup">SIGN UP</ActiveLink>
           </li>
         </>
       )}
@@ -56,14 +56,14 @@ const Header = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
             >
               {menuItems}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <ActiveLink to="/" className="btn btn-ghost normal-case text-xl">
             Car- <span>Intrio</span>
-          </Link>
+          </ActiveLink>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
@@ -71,20 +71,20 @@ const Header = () => {
 
         <div className="navbar-end">
           {user && !user?.photoURL ? (
-            <Link
+            <ActiveLink
               to="/updateProfile"
-              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+              className="block btn btn-lg btn-white bg-slate-200 mt-4 lg:inline-block lg:mt-0  hover:text-white mr-4 p-2"
             >
               {user?.displayName || user?.email}
-            </Link>
+            </ActiveLink>
           ) : (
             ""
           )}
 
           {user?.photoURL ? (
-            <Link
+            <ActiveLink
               to="/updateProfile"
-              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+              className="block btn btn-lg btn-white bg-slate-200 mt-4 lg:inline-block lg:mt-0  hover:text-white mr-4 p-2"
             >
               <img
                 className="h-[30px] w-[30px] "
@@ -92,7 +92,7 @@ const Header = () => {
                 src={user?.photoURL}
                 alt=""
               />
-            </Link>
+            </ActiveLink>
           ) : (
             ""
           )}
@@ -100,9 +100,9 @@ const Header = () => {
 
         {user && (
           <div className="navbar-end">
-            <Link to="/logout" className="btn">
+            <ActiveLink to="/logout" className="btn">
               Logout
-            </Link>
+            </ActiveLink>
           </div>
         )}
       </div>

@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Logout from "./pages/LoginSingnUp/Logout/Logout";
 import Login from "./pages/LoginSingnUp/Login/Login";
 import ForgotPassword from "./pages/LoginSingnUp/ForgetPassword/ForgetPassword";
+import UpdateProfile from "./pages/LoginSingnUp/UpdateProfile/UpdateProfile";
 
 function App() {
   return (
@@ -24,6 +25,13 @@ function App() {
         <Route
           path="/forgot"
           element={<ForgotPassword></ForgotPassword>}
+        ></Route>
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/updateProfile"
+          element={<UpdateProfile></UpdateProfile>}
         ></Route>
       </Routes>
       <Routes>
