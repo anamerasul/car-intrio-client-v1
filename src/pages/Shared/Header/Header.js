@@ -1,7 +1,11 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase/firebase.init";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+
   const menuItems = (
     <>
       <li>
@@ -10,16 +14,23 @@ const Header = () => {
       <li tabIndex="0">
         <Link to="/blogs">BLOGS</Link>
       </li>
-      <li>
-        <Link to="/dashboard">DASHBOARD</Link>
-      </li>
 
-      <li>
-        <Link to="/login">LOGIN</Link>
-      </li>
-      <li>
-        <Link to="/signup">SIGN UP</Link>
-      </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">DASHBOARD</Link>
+        </li>
+      )}
+
+      {!user && (
+        <>
+          <li>
+            <Link to="/login">LOGIN</Link>
+          </li>
+          <li>
+            <Link to="/signup">SIGN UP</Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -57,11 +68,43 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
+
         <div className="navbar-end">
-          <Link to="/" className="btn">
-            Logout
-          </Link>
+          {user && !user.photoURL ? (
+            <Link
+              to="/updateProfile"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+            >
+              {user?.displayName || user?.email}
+            </Link>
+          ) : (
+            ""
+          )}
+
+          {user?.photoURL ? (
+            <Link
+              to="/updateProfile"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+            >
+              <img
+                className="h-[30px] w-[30px] "
+                style={{ borderRadius: "50%" }}
+                src={user?.photoURL}
+                alt=""
+              />
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
+
+        {user && (
+          <div className="navbar-end">
+            <Link to="/logout" className="btn">
+              Logout
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
