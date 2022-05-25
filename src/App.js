@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logout from "./pages/LoginSingnUp/Logout/Logout";
 import Login from "./pages/LoginSingnUp/Login/Login";
+import ForgotPassword from "./pages/LoginSingnUp/ForgetPassword/ForgetPassword";
 
 function App() {
   return (
@@ -18,6 +19,12 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
+      </Routes>
+      <Routes>
+        <Route
+          path="/forgot"
+          element={<ForgotPassword></ForgotPassword>}
+        ></Route>
       </Routes>
       <Routes>
         <Route path="/logout" element={<Logout></Logout>}></Route>

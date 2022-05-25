@@ -35,7 +35,7 @@ const Header = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-sky-600">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -70,7 +70,7 @@ const Header = () => {
         </div>
 
         <div className="navbar-end">
-          {user && !user.photoURL ? (
+          {user && !user?.photoURL ? (
             <Link
               to="/updateProfile"
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
