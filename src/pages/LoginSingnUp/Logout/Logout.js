@@ -36,7 +36,7 @@ const Logout = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center bg-blue-400 h-[80vh]">
+      <div className="flex items-center justify-center bg-blue-400 p-12">
         <div className="px-8 py-6 mx-4 mt-4 text-left bg-white md:w-1/3 lg:w-1/3 sm:w-1/3">
           <h3 className="text-2xl text-teal-600 font-bold text-center">
             Log out Account

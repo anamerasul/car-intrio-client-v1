@@ -47,6 +47,33 @@ const Header = () => {
           </li>
         </>
       )}
+
+      {user && !user?.photoURL ? (
+        <ActiveLink
+          to="/updateProfile"
+          className="block btn btn-primary mt-4 lg:inline-block lg:mt-0  hover:text-white mr-4 p-2"
+        >
+          {user?.displayName || user?.email}
+        </ActiveLink>
+      ) : (
+        ""
+      )}
+
+      {user?.photoURL ? (
+        <ActiveLink
+          to="/updateProfile"
+          className="block btn btn-primary mt-4 lg:inline-block lg:mt-0  hover:text-white mr-4 p-2"
+        >
+          <img
+            className="h-[30px] w-[30px] "
+            style={{ borderRadius: "50%" }}
+            src={user?.photoURL}
+            alt=""
+          />
+        </ActiveLink>
+      ) : (
+        ""
+      )}
     </>
   );
   return (
@@ -85,38 +112,9 @@ const Header = () => {
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
 
-        <div className="navbar-end">
-          {user && !user?.photoURL ? (
-            <ActiveLink
-              to="/updateProfile"
-              className="block btn btn-lg btn-white bg-slate-200 mt-4 lg:inline-block lg:mt-0  hover:text-white mr-4 p-2"
-            >
-              {user?.displayName || user?.email}
-            </ActiveLink>
-          ) : (
-            ""
-          )}
-
-          {user?.photoURL ? (
-            <ActiveLink
-              to="/updateProfile"
-              className="block btn btn-lg btn-white bg-slate-200 mt-4 lg:inline-block lg:mt-0  hover:text-white mr-4 p-2"
-            >
-              <img
-                className="h-[30px] w-[30px] "
-                style={{ borderRadius: "50%" }}
-                src={user?.photoURL}
-                alt=""
-              />
-            </ActiveLink>
-          ) : (
-            ""
-          )}
-        </div>
-
         {user && (
           <div className="navbar-end">
-            <ActiveLink to="/logout" className="btn">
+            <ActiveLink to="/logout" className="btn btn-primary">
               Logout
             </ActiveLink>
           </div>
