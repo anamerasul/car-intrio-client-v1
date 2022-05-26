@@ -10,6 +10,7 @@ import Logout from "./pages/LoginSingnUp/Logout/Logout";
 import Login from "./pages/LoginSingnUp/Login/Login";
 import ForgotPassword from "./pages/LoginSingnUp/ForgetPassword/ForgetPassword";
 import UpdateProfile from "./pages/LoginSingnUp/UpdateProfile/UpdateProfile";
+import AdminLogin from "./pages/LoginSingnUp/AdminLogin/AdminLogin";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/logout" element={<Logout></Logout>}></Route>
+      </Routes>
+      <Routes>
+        <Route path="/admin" element={<AdminLogin></AdminLogin>}></Route>
       </Routes>
       <Footer></Footer>
 
