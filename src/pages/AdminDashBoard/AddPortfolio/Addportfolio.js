@@ -1,8 +1,11 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import auth from "../../../firebase/firebase.init";
 
 const Addportfolio = () => {
+  const [user] = useAuthState(auth);
   const {
     register,
     formState: { errors },
@@ -12,6 +15,24 @@ const Addportfolio = () => {
 
   const onSubmitPortfolio = (data) => {
     console.log(data);
+
+    fetch("http://localhost:3005/portfolio", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((inserted) => {
+        if (inserted.insertedId) {
+          toast.success("portfolio added successfully");
+          reset();
+        } else {
+          toast.error("Failed to add the portfolio");
+        }
+      });
   };
   return (
     <div className="px-8 py-12 w-4/5 mx-4 mt-4 text-left bg-white my-0 ">

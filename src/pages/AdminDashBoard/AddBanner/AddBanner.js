@@ -64,7 +64,7 @@ const AddBanner = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(banners),
     })
