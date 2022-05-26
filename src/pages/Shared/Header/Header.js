@@ -15,9 +15,25 @@ const Header = () => {
         <ActiveLink to="/blogs">BLOGS</ActiveLink>
       </li>
 
+      <li>
+        <ActiveLink to="/Portfolio">PORTFOLIO</ActiveLink>
+      </li>
+      <li tabIndex="0">
+        <ActiveLink to="/products">PRODUCTS</ActiveLink>
+      </li>
+
+      <li tabIndex="0">
+        <ActiveLink to="/clientsreview">CLIENTS REVIEW</ActiveLink>
+      </li>
       {user && (
         <li>
           <ActiveLink to="/dashboard">DASHBOARD</ActiveLink>
+        </li>
+      )}
+
+      {user && (
+        <li>
+          <ActiveLink to="/admindashboard">ADMIN DASHBOARD</ActiveLink>
         </li>
       )}
 
@@ -56,7 +72,7 @@ const Header = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
+              className="menu bg-sky-600 menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
             >
               {menuItems}
             </ul>
