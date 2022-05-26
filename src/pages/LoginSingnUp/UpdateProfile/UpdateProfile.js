@@ -58,8 +58,6 @@ const UpdateProfile = () => {
     e.preventDefault();
 
     if (!displayName) {
-      console.log("set");
-
       return false;
     }
     updateProfile(displayName, photoURL);

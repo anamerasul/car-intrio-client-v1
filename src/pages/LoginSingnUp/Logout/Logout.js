@@ -15,6 +15,7 @@ const Logout = () => {
   const from = location.state?.form?.pathname || "/";
   const handleLogout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
     if (user) {
       window.location.href = from;
     }

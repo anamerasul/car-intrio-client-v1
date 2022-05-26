@@ -80,17 +80,17 @@ const AdminDashbardHome = () => {
     //   </div>
     // </div>
 
-    <div className="bg-base-100">
-      <h2 className="text-2xl font-bold text-white">
+    <div className="bg-base-100 py-10">
+      <h2 className="text-2xl font-bold text-white py-6">
         Welcome to ADMIN DASHBOARD
       </h2>
-      <div className="drawer drawer-mobile bg-base-100">
+      <div className="drawer w-full drawer-mobile bg-base-100">
         {/* <Outlet></Outlet> */}
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           <label
             htmlFor="my-drawer-2"
-            class="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-primary drawer-button lg:hidden"
           >
             Open Admin Dashboard
           </label>
@@ -99,7 +99,7 @@ const AdminDashbardHome = () => {
         </div>
 
         <div className="drawer-side">
-          <label for="my-drawer-2" className="drawer-overlay"></label>
+          <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
           <ul className="menu p-4 overflow-y-auto w-80 bg-secondary  text-white">
             <li>

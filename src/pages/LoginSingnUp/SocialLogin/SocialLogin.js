@@ -64,6 +64,25 @@ const SocialLogin = () => {
   //     }
   //   }, [user, navigate, from]);
 
+  if (user) {
+    const url = `http://localhost:3005/login`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: user.email,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken); // l
+
+        navigate(from, { replace: true });
+      });
+  }
+
   return (
     <div className="flex justify-center mt-4">
       <div className="mr-4">

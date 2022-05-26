@@ -14,7 +14,7 @@ const AdminLogin = () => {
     useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.form?.pathname || "/dashboard";
+  const from = location.state?.form?.pathname || "/adminDashboard";
 
   const [authuser] = useAuthState(auth);
 
@@ -44,6 +44,25 @@ const AdminLogin = () => {
     }
     // }, 2);
   }, [authuser, navigate, from]);
+
+  if (authuser) {
+    const url = `http://localhost:3005/login`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: authuser.email,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken); // l
+
+        navigate(from, { replace: true });
+      });
+  }
 
   return (
     <div className="flex items-center justify-center bg-blue-400">

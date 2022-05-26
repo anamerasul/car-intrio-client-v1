@@ -95,10 +95,8 @@ const SignUp = () => {
 
     e.target.reset();
   };
-
+  let from = location.state?.form?.pathname || "/";
   useEffect(() => {
-    let from = location.state?.form?.pathname || "/";
-
     if (user) {
       navigate(from, { replace: true });
     }
@@ -113,6 +111,25 @@ const SignUp = () => {
   console.log(previousemail);
 
   console.log(email);
+
+  if (alredeyuser) {
+    const url = `http://localhost:3005/login`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: alredeyuser.email,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken); // l
+
+        navigate(from, { replace: true });
+      });
+  }
 
   return (
     <div className="flex items-center justify-center bg-blue-400">

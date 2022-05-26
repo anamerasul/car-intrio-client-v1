@@ -62,6 +62,25 @@ const Login = () => {
   //   window.location.href = from;
   // }
 
+  if (authuser) {
+    const url = `http://localhost:3005/login`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: authuser.email,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken); // l
+
+        navigate(from, { replace: true });
+      });
+  }
+
   return (
     <div className="flex items-center justify-center bg-blue-400">
       <div className="px-8 py-6 mx-4 mt-4 text-left bg-white md:w-1/3 lg:w-1/3 sm:w-1/3 my-10">
