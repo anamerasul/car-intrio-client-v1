@@ -44,7 +44,7 @@ const Myprofile = () => {
       <img
         src={data?.image || user?.photoURL}
         alt="profile"
-        className="w-1/2 h-1/2 mx-auto mt-4"
+        className="w-1/4 h-1/3 mx-auto mt-4"
       />
       <div className="mt-4 text-center ">
         <div className="text-2xl text-yellow-800">Name: {data?.name}</div>

@@ -21,7 +21,7 @@ const Header = () => {
         <ActiveLink to="/Portfolio">PORTFOLIO</ActiveLink>
       </li>
       <li tabIndex="0">
-        <ActiveLink to="/products">PRODUCTS</ActiveLink>
+        <ActiveLink to="/products">ALL PARTS</ActiveLink>
       </li>
 
       <li tabIndex="0">
@@ -33,7 +33,7 @@ const Header = () => {
         </li>
       )}
 
-      {admin && user && (
+      {admin && (
         <li>
           <ActiveLink to="/admindashboard">ADMIN DASHBOARD</ActiveLink>
         </li>

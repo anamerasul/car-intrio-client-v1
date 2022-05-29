@@ -37,6 +37,9 @@ import AddReview from "./pages/Dashboard/AddReview/AddReview";
 // import AddAReview from "./pages/DashBoard/AddAReview/AddAReview";
 import UserOrder from "./pages/Dashboard/UserOrder/UserOrder";
 import RequireAdmin from "./pages/LoginSingnUp/RequireAdmin/RequireAdmin";
+import AddUserProfile from "./pages/Dashboard/ManageUserProfile/AddUserProfile";
+import ManageUserprofile from "./pages/Dashboard/ManageUserProfile/ManageUserprofile";
+import PurchaseItems from "./pages/PurchaseItems/PurchaseItems";
 
 function App() {
   return (
@@ -56,6 +59,14 @@ function App() {
           element={
             <RequireAuth>
               <Products></Products>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/products/:id"
+          element={
+            <RequireAuth>
+              <PurchaseItems></PurchaseItems>
             </RequireAuth>
           }
         ></Route>
@@ -88,8 +99,16 @@ function App() {
         >
           {/* <Route index element={<DashbardHome></DashbardHome>}></Route> */}
           <Route path="myprofile" element={<UserProfile></UserProfile>}></Route>
+          <Route
+            path="adduserprofile"
+            element={<AddUserProfile></AddUserProfile>}
+          ></Route>
           <Route path="addreview" element={<AddReview></AddReview>}></Route>
           <Route path="myorders" element={<UserOrder></UserOrder>}></Route>
+          <Route
+            path="myprofile/:id"
+            element={<ManageUserprofile></ManageUserprofile>}
+          ></Route>
         </Route>
 
         {/* admin Dashboard Route */}

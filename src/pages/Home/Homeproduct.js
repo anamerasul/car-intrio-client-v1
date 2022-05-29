@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
-const Products = () => {
+const Homeproduct = () => {
   const navigate = useNavigate();
   const [products, setProduct] = useState([]);
   useEffect(() => {
@@ -12,6 +12,8 @@ const Products = () => {
         setProduct(data);
       });
   }, []);
+
+  console.log(products[0]);
 
   //   {
   //     image: "https://i.ibb.co/jWmgf5Z/1581952049.png";
@@ -23,16 +25,16 @@ const Products = () => {
   //     _id: "629260fddcc67b04e94e842f";
   //   }
 
-  const navigatpurchasedetails = (p) => {
+  const navigatpurchase = (p) => {
     console.log(p);
     navigate("/products/" + p);
     //     /products/:id
   };
   return (
-    <div className="bg-base-100 py-10">
+    <div className="py-5 ">
       <h2 className="text-4xl  font-bold">PARTS</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6 container ">
-        {products.map((product) => (
+        {products.slice(0, 6).map((product) => (
           <div
             key={product._id}
             className="transform bg-teal-600  hover:-translate-y-3 to-hover hover:bg-accent text-center secondary-bg transition duration-300 rounded w-4/5 shadow-lg mx-auto p-6"
@@ -55,7 +57,7 @@ const Products = () => {
 
             <div className="mr-4">
               <button
-                onClick={() => navigatpurchasedetails(product._id)}
+                onClick={() => navigatpurchase(product._id)}
                 id="btn"
                 className=" w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-800"
               >
@@ -65,8 +67,12 @@ const Products = () => {
           </div>
         ))}
       </div>
+
+      <Link className="bg-gray-800 text-white px-8 py-2 rounded" to="/products">
+        SEE ALL PARTS
+      </Link>
     </div>
   );
 };
 
-export default Products;
+export default Homeproduct;

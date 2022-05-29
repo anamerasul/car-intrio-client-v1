@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Rating from "react-rating";
 import { FcRating } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
-const ClientsReview = () => {
+const HomeReview = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -14,15 +15,15 @@ const ClientsReview = () => {
   console.log(reviews);
 
   return (
-    <div className="bg-base-100">
+    <div className="py-6">
       <h2 className=" py-5 text-center text-4xl font-bold text-gray-700">
-        Client Review
+        User Review
       </h2>
       <p className="text-white pb-10">
         Some of our valuable custome left some review for us
       </p>
       <div className=" mx-auto grid gap-8 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 w-5/6 pb-24">
-        {reviews.map((review) => (
+        {reviews.slice(0, 3).map((review) => (
           <div
             key={review._id}
             className="mx-auto bg-gray-50 shadow-xl rounded-box py-8 w-full"
@@ -109,8 +110,14 @@ const ClientsReview = () => {
           </div>
         ))}
       </div>
+      <Link
+        className="bg-gray-800 text-white px-8 py-2 rounded"
+        to="/clientsreview"
+      >
+        SEE ALL REVIEWS
+      </Link>
     </div>
   );
 };
 
-export default ClientsReview;
+export default HomeReview;
