@@ -6,6 +6,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase/firebase.init";
+import UseToken from "../../../Hooks/UseToken";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
@@ -18,6 +19,7 @@ const Login = () => {
   const from = location.state?.form?.pathname || "/";
 
   const [authuser] = useAuthState(auth);
+  const [token] = UseToken(user);
 
   console.log(authuser);
 
@@ -80,6 +82,12 @@ const Login = () => {
         navigate(from, { replace: true });
       });
   }
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
 
   return (
     <div className="flex items-center justify-center bg-blue-400">

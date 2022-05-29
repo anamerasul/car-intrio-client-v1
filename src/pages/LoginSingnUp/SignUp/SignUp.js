@@ -8,6 +8,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase/firebase.init";
+import UseToken from "../../../Hooks/UseToken";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignUp = () => {
@@ -38,6 +39,8 @@ const SignUp = () => {
 
   const [sendEmailVerification, sending, verifyerror] =
     useSendEmailVerification(auth);
+
+  const [token] = UseToken(user);
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
@@ -130,6 +133,12 @@ const SignUp = () => {
         navigate(from, { replace: true });
       });
   }
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
 
   return (
     <div className="flex items-center justify-center bg-blue-400">

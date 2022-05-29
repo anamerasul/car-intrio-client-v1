@@ -30,6 +30,13 @@ import ManageProduct from "./pages/AdminDashBoard/ManageProduct/ManageProduct";
 import ManageOrders from "./pages/AdminDashBoard/ManageOrders/ManageOrders";
 import ManageReviews from "./pages/AdminDashBoard/ManageReviews/ManageReviews";
 import ManageUser from "./pages/AdminDashBoard/ManageUser/ManageUser";
+import ManageProfile from "./pages/AdminandUserDashboardShared/MyProfile/ManageProfile";
+import AddProduct from "./pages/AdminDashBoard/AddProduct/Addproduct";
+import UserProfile from "./pages/Dashboard/ManageUserProfile/UserProfile";
+import AddReview from "./pages/Dashboard/AddReview/AddReview";
+// import AddAReview from "./pages/DashBoard/AddAReview/AddAReview";
+import UserOrder from "./pages/Dashboard/UserOrder/UserOrder";
+import RequireAdmin from "./pages/LoginSingnUp/RequireAdmin/RequireAdmin";
 
 function App() {
   return (
@@ -72,9 +79,18 @@ function App() {
         {/* user dashboard route */}
 
         <Route
-          path="/dashboard"
-          element={<DashbardHome></DashbardHome>}
-        ></Route>
+          path="dashboard"
+          element={
+            <RequireAuth>
+              <DashbardHome></DashbardHome>
+            </RequireAuth>
+          }
+        >
+          {/* <Route index element={<DashbardHome></DashbardHome>}></Route> */}
+          <Route path="myprofile" element={<UserProfile></UserProfile>}></Route>
+          <Route path="addreview" element={<AddReview></AddReview>}></Route>
+          <Route path="myorders" element={<UserOrder></UserOrder>}></Route>
+        </Route>
 
         {/* admin Dashboard Route */}
 
@@ -83,19 +99,75 @@ function App() {
           element={<AdminDashbardHome></AdminDashbardHome>}
         ></Route> */}
 
-        <Route path="admindashboard" element={<AdminDashbardHome />}>
-          <Route index element={<AddBanner></AddBanner>}></Route>
-          <Route path="addBanner" element={<AddBanner></AddBanner>}></Route>
+        <Route
+          path="admindashboard"
+          element={
+            <RequireAdmin>
+              <AdminDashbardHome />
+            </RequireAdmin>
+          }
+        >
+          <Route
+            index
+            element={
+              <RequireAdmin>
+                <AddBanner></AddBanner>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="addBanner"
+            element={
+              <RequireAdmin>
+                <AddBanner></AddBanner>
+              </RequireAdmin>
+            }
+          ></Route>
           <Route path="addBlogs" element={<AddBlogs></AddBlogs>}></Route>
           <Route
             path="addportfolio"
-            element={<AddPortfolio></AddPortfolio>}
+            element={
+              <RequireAdmin>
+                <AddPortfolio></AddPortfolio>
+              </RequireAdmin>
+            }
           ></Route>
-          <Route path="addprofile" element={<Addprofile></Addprofile>}></Route>
-          <Route path="myprofile" element={<Myprofile></Myprofile>}></Route>
+          <Route
+            path="addprofile"
+            element={
+              <RequireAdmin>
+                <Addprofile></Addprofile>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="myprofile"
+            element={
+              <RequireAdmin>
+                <Myprofile></Myprofile>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="myprofile/:id"
+            element={
+              <RequireAdmin>
+                <ManageProfile></ManageProfile>
+              </RequireAdmin>
+            }
+          ></Route>
           <Route
             path="manageallproduct"
-            element={<ManageProduct></ManageProduct>}
+            element={
+              <RequireAdmin>
+                <ManageProduct></ManageProduct>
+              </RequireAdmin>
+            }
+          ></Route>
+
+          <Route
+            path="manageallproduct/addproduct"
+            element={<AddProduct></AddProduct>}
           ></Route>
           <Route
             path="manageallorder"
@@ -108,6 +180,7 @@ function App() {
           <Route path="manageuser" element={<ManageUser></ManageUser>}></Route>
         </Route>
 
+        {/* /admin/profile/${_id} */}
         {/* not found page route */}
 
         <Route path="*" element={<Notfound></Notfound>}></Route>

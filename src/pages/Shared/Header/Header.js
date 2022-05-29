@@ -1,10 +1,12 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase/firebase.init";
+import useAdmin from "../../../Hooks/useAdmin";
 import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
 
   const menuItems = (
     <>
@@ -31,7 +33,7 @@ const Header = () => {
         </li>
       )}
 
-      {user && (
+      {admin && user && (
         <li>
           <ActiveLink to="/admindashboard">ADMIN DASHBOARD</ActiveLink>
         </li>

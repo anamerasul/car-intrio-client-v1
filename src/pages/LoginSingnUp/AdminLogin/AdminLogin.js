@@ -6,6 +6,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase/firebase.init";
+import UseToken from "../../../Hooks/UseToken";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,8 @@ const AdminLogin = () => {
   const from = location.state?.form?.pathname || "/adminDashboard";
 
   const [authuser] = useAuthState(auth);
+
+  const [token] = UseToken(user);
 
   console.log(authuser);
   const handleAdminSubmit = (e) => {
@@ -37,32 +40,38 @@ const AdminLogin = () => {
     signInWithEmailAndPassword(email, password);
   };
 
+  // useEffect(() => {
+  //   // setTimeout(() => {
+  //   if (authuser) {
+  //     navigate(from, { replace: true });
+  //   }
+  //   // }, 2);
+  // }, [authuser, navigate, from]);
+
+  // if (authuser) {
+  //   const url = `http://localhost:3005/login`;
+  //   fetch(url, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       email: authuser.email,
+  //     }),
+  //     headers: {
+  //       "Content-type": "application/json; charset=UTF-8",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       localStorage.setItem("accessToken", data.accessToken); // l
+
+  //       navigate(from, { replace: true });
+  //     });
+  // }
+
   useEffect(() => {
-    // setTimeout(() => {
-    if (authuser) {
+    if (token) {
       navigate(from, { replace: true });
     }
-    // }, 2);
-  }, [authuser, navigate, from]);
-
-  if (authuser) {
-    const url = `http://localhost:3005/login`;
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        email: authuser.email,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem("accessToken", data.accessToken); // l
-
-        navigate(from, { replace: true });
-      });
-  }
+  }, [token, from, navigate]);
 
   return (
     <div className="flex items-center justify-center bg-blue-400">

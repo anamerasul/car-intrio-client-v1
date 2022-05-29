@@ -8,6 +8,7 @@ import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase/firebase.init";
+import UseToken from "../../../Hooks/UseToken";
 
 const SocialLogin = () => {
   const [signInWithGoogle, googleuser, googleloading, googleerror] =
@@ -82,6 +83,13 @@ const SocialLogin = () => {
         navigate(from, { replace: true });
       });
   }
+  const [token] = UseToken(googleuser || githubuser);
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
 
   return (
     <div className="flex justify-center mt-4">

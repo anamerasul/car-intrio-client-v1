@@ -105,9 +105,9 @@ const Addportfolio = () => {
             <textarea
               type="text"
               name="skills"
-              placeholder="Skills"
+              placeholder="skills"
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-              {...register("Skills", {
+              {...register("myskills", {
                 required: {
                   value: true,
                   message: "skills is required",

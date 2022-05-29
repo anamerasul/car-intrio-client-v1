@@ -118,6 +118,9 @@ const AdminDashbardHome = () => {
               <Link to="myprofile">MY PROFILE</Link>
             </li>
             <li>
+              <Link to="manageallproduct/addproduct">ADD A PRODUCT</Link>
+            </li>
+            <li>
               <Link to="manageallproduct">MANAGE ALL PRODUCT</Link>
             </li>
             <li>

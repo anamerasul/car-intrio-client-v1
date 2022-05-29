@@ -73,7 +73,7 @@ const AddBanner = () => {
         if (inserted.insertedId) {
           toast.success("Banner successfully uploaded");
 
-          navigate("/admin", { replace: true });
+          navigate("/admindashboard", { replace: true });
           reset();
         } else {
           toast.error("Failed to upload banner");
