@@ -177,6 +177,31 @@ const PurchaseItems = () => {
 
   return (
     <div className="bg-base-100 p-10">
+      <h2 className="text-4xl py-4 font-bold">Purchase Items</h2>
+      <div className="py-5">
+        <label htmlFor="my-modal-6" className="btn modal-button">
+          USER INFORMATION
+        </label>
+        <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+        <div className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">NAME:{user?.displayName}</h3>
+            <p className="py-4">email:{user?.email}</p>
+            <img
+              className="h-[60px] w-[60px] "
+              style={{ borderRadius: "50%" }}
+              src={user?.photoURL}
+              alt=""
+            />
+
+            <div className="modal-action">
+              <label htmlFor="my-modal-6" class="btn btn-info">
+                close
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="transform bg-teal-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-full sm:w-1/2 shadow-lg mx-auto p-4">
         <div>
           <img
