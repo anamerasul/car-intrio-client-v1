@@ -16,7 +16,7 @@ const BusinessSumary = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3005/addreviews")
+    fetch("https://calm-sierra-62921.herokuapp.com/addreviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -24,13 +24,13 @@ const BusinessSumary = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:3005/adduserorder`)
+    fetch(`https://calm-sierra-62921.herokuapp.com/adduserorder`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3005/products")
+    fetch("https://calm-sierra-62921.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -38,12 +38,12 @@ const BusinessSumary = () => {
   }, []);
 
   //         useEffect()=>{
-  // fetch(`http://localhost:3005/user`)
+  // fetch(`https://calm-sierra-62921.herokuapp.com/user`)
   //  .then((res)=>res.json())
   // .then((data)=>{ setUsers(data)},[])
 
   useEffect(() => {
-    fetch(`http://localhost:3005/user`)
+    fetch(`https://calm-sierra-62921.herokuapp.com/user`)
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);

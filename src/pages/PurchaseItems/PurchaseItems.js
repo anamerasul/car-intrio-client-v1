@@ -21,7 +21,7 @@ const PurchaseItems = () => {
 
   const [stockquantity, setStockquantity] = useState(0);
   useEffect(() => {
-    fetch(`http://localhost:3005/products/${id}`)
+    fetch(`https://calm-sierra-62921.herokuapp.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -120,7 +120,7 @@ const PurchaseItems = () => {
 
     //     updateProductQuantity(mydata.mypurchasequantity);
 
-    fetch(`http://localhost:3005/products/${id}`, {
+    fetch(`https://calm-sierra-62921.herokuapp.com/products/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -138,7 +138,7 @@ const PurchaseItems = () => {
         }
       });
 
-    fetch(`http://localhost:3005/adduserorder`, {
+    fetch(`https://calm-sierra-62921.herokuapp.com/adduserorder`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -155,7 +155,7 @@ const PurchaseItems = () => {
         }
       });
 
-    fetch(`http://localhost:3005/payment`, {
+    fetch(`https://calm-sierra-62921.herokuapp.com/payment`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

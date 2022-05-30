@@ -13,7 +13,7 @@ const Banner = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3005/banners")
+    fetch("https://calm-sierra-62921.herokuapp.com/banners")
       .then((res) => res.json())
       .then((data) => {
         setBanners(data);

@@ -38,7 +38,7 @@ const AddReview = () => {
 
     //     console.log(JSON.stringify(adduserProfileInfo));
 
-    fetch("http://localhost:3005/addreviews", {
+    fetch("https://calm-sierra-62921.herokuapp.com/addreviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -56,7 +56,7 @@ const AddReview = () => {
         }
       });
 
-    fetch("http://localhost:3005/blogs", {
+    fetch("https://calm-sierra-62921.herokuapp.com/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

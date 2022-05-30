@@ -12,7 +12,7 @@ const ManageUserprofile = () => {
 
   console.log(id);
 
-  const updateurl = `http://localhost:3005/adduserprofile/${id}`;
+  const updateurl = `https://calm-sierra-62921.herokuapp.com/adduserprofile/${id}`;
 
   console.log(updateurl);
 
@@ -108,7 +108,7 @@ const ManageUserprofile = () => {
     //     const addProfileInfo = { data, useremail: user?.email };
     //     console.log(addProfileInfo);
     //     console.log(JSON.stringify(addProfileInfo));
-    //     fetch("http://localhost:3005/addProfile", {
+    //     fetch("https://calm-sierra-62921.herokuapp.com/addProfile", {
     //       method: "POST",
     //       headers: {
     //         "content-type": "application/json",

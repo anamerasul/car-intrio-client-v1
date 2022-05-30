@@ -15,7 +15,7 @@ const AddBlogs = () => {
   } = useForm();
 
   const onSubmitQuestion = (data) => {
-    fetch("http://localhost:3005/blogs", {
+    fetch("https://calm-sierra-62921.herokuapp.com/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

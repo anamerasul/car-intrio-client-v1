@@ -8,7 +8,7 @@ const UserProfile = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    const url = `http://localhost:3005/adduserprofile/${user?.email}`;
+    const url = `https://calm-sierra-62921.herokuapp.com/adduserprofile/${user?.email}`;
     fetch(url, {
       headers: {
         authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,

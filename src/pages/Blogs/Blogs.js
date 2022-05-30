@@ -8,7 +8,7 @@ const Blogs = () => {
   // const [urL] = UrlConfig(``);
 
   useEffect(() => {
-    fetch(`http://localhost:3005/blogs`)
+    fetch(`https://calm-sierra-62921.herokuapp.com/blogs`)
       .then((res) => res.json())
       .then((data) => {
         setAnswers(data);

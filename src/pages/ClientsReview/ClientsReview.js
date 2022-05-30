@@ -6,7 +6,7 @@ const ClientsReview = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3005/addreviews")
+    fetch("https://calm-sierra-62921.herokuapp.com/addreviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

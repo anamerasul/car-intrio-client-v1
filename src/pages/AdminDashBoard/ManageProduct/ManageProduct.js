@@ -55,9 +55,9 @@ const ManageProduct = (p) => {
     if (procced) {
       // toast.success("successfully Delete");
 
-      console.log(`http://localhost:3005/products/${p._id}`);
+      console.log(`https://calm-sierra-62921.herokuapp.com/products/${p._id}`);
 
-      fetch(`http://localhost:3005/products/${p._id}`, {
+      fetch(`https://calm-sierra-62921.herokuapp.com/products/${p._id}`, {
         method: "Delete", // or 'PUT'
         headers: {
           authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
@@ -78,7 +78,7 @@ const ManageProduct = (p) => {
     }
 
     // if (proceed) {
-    // fetch(`http://localhost:3005/products/${p._id}`, {
+    // fetch(`https://calm-sierra-62921.herokuapp.com/products/${p._id}`, {
     //   method: "Delete", // or 'PUT'
     //   headers: {
     //     authorization: `${user.email} ${localStorage.getItem(
@@ -111,7 +111,7 @@ const ManageProduct = (p) => {
   const [products, setProducts] = useState([]);
 
   // const { data: services, isLoading } = useQuery("services", () =>
-  //   fetch("http://localhost:3005/products").then((res) => res.json())
+  //   fetch("https://calm-sierra-62921.herokuapp.com/products").then((res) => res.json())
   // );
 
   // console.log(services);
@@ -120,7 +120,7 @@ const ManageProduct = (p) => {
 
   //   if(deleteitem){
 
-  //     fetch(`http://localhost:3005/products${p._id}`, {
+  //     fetch(`https://calm-sierra-62921.herokuapp.com/products${p._id}`, {
   //       method: "Delete", // or 'PUT'
   //       headers: {
   //         authorization: `${user.email} ${localStorage.getItem(
@@ -144,7 +144,9 @@ const ManageProduct = (p) => {
   // }, [deleteitem]);
   const Example = () => {
     const { isLoading, error, data } = useQuery("repoData", () =>
-      fetch("http://localhost:3005/products").then((res) => res.json())
+      fetch("https://calm-sierra-62921.herokuapp.com/products").then((res) =>
+        res.json()
+      )
     );
     setProducts(data);
     console.log(products);

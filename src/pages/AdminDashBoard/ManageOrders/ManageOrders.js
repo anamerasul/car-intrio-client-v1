@@ -11,7 +11,7 @@ const ManageOrders = () => {
 
   useEffect(() => {
     setLoading(false);
-    fetch(`http://localhost:3005/adduserorder`, {
+    fetch(`https://calm-sierra-62921.herokuapp.com/adduserorder`, {
       headers: {
         authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
       },
@@ -32,7 +32,7 @@ const ManageOrders = () => {
     const data = paymentinfo;
 
     //   console.log(paymentinfo);
-    // fetch(`http://localhost:3005/adduserorder/${order._id}`, {
+    // fetch(`https://calm-sierra-62921.herokuapp.com/adduserorder/${order._id}`, {
     //   method: "PUT",
     //   headers: {
     //     "content-type": "application/json",
@@ -128,7 +128,7 @@ export default ManageOrders;
 //   const [loading, setLoading] = useState(false);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:3005/adduserorder/${user?.email}`, {
+//     fetch(`https://calm-sierra-62921.herokuapp.com/adduserorder/${user?.email}`, {
 //       headers: {
 //         authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
 //       },
@@ -140,7 +140,7 @@ export default ManageOrders;
 //   }, [loading]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:3005/payment/${user?.email}`, {
+//     fetch(`https://calm-sierra-62921.herokuapp.com/payment/${user?.email}`, {
 //       headers: {
 //         authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
 //       },
@@ -155,7 +155,7 @@ export default ManageOrders;
 //   console.log(paymentinfo);
 //   const makepayment = (paymentinfo) => {
 //     //   console.log(paymentinfo);
-//     //   fetch(`http://localhost:3005/payment`, {
+//     //   fetch(`https://calm-sierra-62921.herokuapp.com/payment`, {
 //     //     method: "PUT",
 //     //     headers: {
 //     //       "content-type": "application/json",
@@ -177,7 +177,7 @@ export default ManageOrders;
 
 //     if (procced) {
 //       console.log(order._id);
-//       fetch(`http://localhost:3005/deleteorder/${order._id}`, {
+//       fetch(`https://calm-sierra-62921.herokuapp.com/deleteorder/${order._id}`, {
 //         method: "DELETE",
 //         headers: {
 //           authorization: `${user?.email} ${localStorage.getItem(

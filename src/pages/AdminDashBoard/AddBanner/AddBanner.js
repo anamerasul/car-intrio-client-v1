@@ -60,7 +60,7 @@ const AddBanner = () => {
     };
 
     // send to your database
-    fetch("http://localhost:3005/banner", {
+    fetch("https://calm-sierra-62921.herokuapp.com/banner", {
       method: "POST",
       headers: {
         "content-type": "application/json",

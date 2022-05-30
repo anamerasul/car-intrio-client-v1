@@ -31,7 +31,7 @@ const Addprofile = () => {
 
     console.log(JSON.stringify(addProfileInfo));
 
-    fetch("http://localhost:3005/addProfile", {
+    fetch("https://calm-sierra-62921.herokuapp.com/addProfile", {
       method: "POST",
       headers: {
         "content-type": "application/json",

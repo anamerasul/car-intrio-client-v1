@@ -50,7 +50,7 @@ const Addproduct = () => {
           console.log(product);
 
           // send to your database
-          fetch("http://localhost:3005/products", {
+          fetch("https://calm-sierra-62921.herokuapp.com/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -69,7 +69,7 @@ const Addproduct = () => {
                 toast.error("Failed to add the product");
               }
             });
-navigate('/admindashboard/manageallproduct')
+          navigate("/admindashboard/manageallproduct");
           // console.log(JSON.stringify(addProfileInfo));
         }
       });

@@ -27,7 +27,7 @@ const UserRow = ({
 
   const makeAdmin = (cuser) => {
     console.log(cuser);
-    fetch(`http://localhost:3005/user/admin/${email}`, {
+    fetch(`https://calm-sierra-62921.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `${authuser.email} ${localStorage.getItem(
@@ -53,7 +53,7 @@ const UserRow = ({
 
   const removeAdmin = (cuser) => {
     console.log(cuser);
-    fetch(`http://localhost:3005/user/removeadmin/${email}`, {
+    fetch(`https://calm-sierra-62921.herokuapp.com/user/removeadmin/${email}`, {
       method: "PUT",
 
       headers: {
@@ -79,13 +79,13 @@ const UserRow = ({
   };
 
   const removeUser = (cuser) => {
-    console.log(`http://localhost:3005/users/${cuser._id}`);
+    console.log(`https://calm-sierra-62921.herokuapp.com/users/${cuser._id}`);
     const procced = window.confirm("Are you sure to delete?");
 
     if (procced) {
       // toast.success("successfully Delete");
 
-      fetch(`http://localhost:3005/users/${cuser._id}`, {
+      fetch(`https://calm-sierra-62921.herokuapp.com/users/${cuser._id}`, {
         method: "Delete", // or 'PUT'
         headers: {
           authorization: `${authuser.email} ${localStorage.getItem(

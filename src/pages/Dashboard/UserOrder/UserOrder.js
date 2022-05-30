@@ -12,11 +12,16 @@ const UserOrder = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3005/adduserorder/${user?.email}`, {
-      headers: {
-        authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://calm-sierra-62921.herokuapp.com/adduserorder/${user?.email}`,
+      {
+        headers: {
+          authorization: `${user?.email} ${localStorage.getItem(
+            "accessToken"
+          )}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setOrder(data);
@@ -24,7 +29,7 @@ const UserOrder = () => {
   }, [loading]);
 
   useEffect(() => {
-    fetch(`http://localhost:3005/payment/${user?.email}`, {
+    fetch(`https://calm-sierra-62921.herokuapp.com/payment/${user?.email}`, {
       headers: {
         authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
       },
@@ -39,7 +44,7 @@ const UserOrder = () => {
   console.log(paymentinfo);
   const makepayment = (paymentinfo) => {
     //   console.log(paymentinfo);
-    //   fetch(`http://localhost:3005/payment`, {
+    //   fetch(`https://calm-sierra-62921.herokuapp.com/payment`, {
     //     method: "PUT",
     //     headers: {
     //       "content-type": "application/json",
@@ -61,14 +66,17 @@ const UserOrder = () => {
 
     if (procced) {
       console.log(order._id);
-      fetch(`http://localhost:3005/deleteorder/${order._id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `${user?.email} ${localStorage.getItem(
-            "accessToken"
-          )}`,
-        },
-      })
+      fetch(
+        `https://calm-sierra-62921.herokuapp.com/deleteorder/${order._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `${user?.email} ${localStorage.getItem(
+              "accessToken"
+            )}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {

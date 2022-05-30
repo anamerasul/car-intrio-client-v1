@@ -10,7 +10,7 @@ const ManageUser = () => {
   //   isLoading,
   //   refetch,
   // } = useQuery("users", () =>
-  //   fetch("http://localhost:3005/user", {
+  //   fetch("https://calm-sierra-62921.herokuapp.com/user", {
   //     method: "GET",
   //     headers: {
   //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -31,7 +31,7 @@ const ManageUser = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:3005/user", {
+    fetch("https://calm-sierra-62921.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `${authuser.email} ${localStorage.getItem(
