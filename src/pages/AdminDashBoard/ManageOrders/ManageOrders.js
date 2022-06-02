@@ -58,6 +58,7 @@ const ManageOrders = () => {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Ordering person</th>
               <th>ORDER QUANTIY</th>
               <th>TOTAL PRICE</th>
               <th>PAYMENT INFO</th>
@@ -68,6 +69,7 @@ const ManageOrders = () => {
             {orders?.map((order) => (
               <tr key={order._id} order={order}>
                 <td>{order?.productname}</td>
+                <td>{order?.email}</td>
                 <td>{order?.mypurchasequantity}</td>
                 <td>{order?.totalPrice}</td>
                 <td>

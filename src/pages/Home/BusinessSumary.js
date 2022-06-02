@@ -54,13 +54,13 @@ const BusinessSumary = () => {
     <div className="p-4 bg-green-400 ">
       <h1 className="text-4xl text-white">Business Sumary</h1>
 
-      <div className="flex justify-around">
-        <div className="p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 align-center">
+        <div className="p-4 flex flex-row justify-around ">
           <FaUsers className="text-6xl"></FaUsers>
           <h1 className="text-yellow-400 text-2xl"> USERS: {users?.length}</h1>
         </div>
 
-        <div className="p-4">
+        <div className="p-4 flex flex-row justify-around">
           <FaProductHunt className="text-6xl"></FaProductHunt>
           <h1 className="text-yellow-400 text-2xl">
             {" "}
@@ -68,7 +68,7 @@ const BusinessSumary = () => {
           </h1>
         </div>
 
-        <div className="p-4">
+        <div className="p-4 flex flex-row justify-around">
           <FaOpencart className="text-6xl"></FaOpencart>
           <h1 className="text-yellow-400 text-2xl">
             {" "}
@@ -76,7 +76,7 @@ const BusinessSumary = () => {
           </h1>
         </div>
 
-        <div className="p-4">
+        <div className="p-4 flex flex-row justify-around">
           <FcRating className="text-6xl"></FcRating>
           <h1 className="text-yellow-400 text-2xl">
             {" "}

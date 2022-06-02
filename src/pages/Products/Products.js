@@ -47,9 +47,13 @@ const Products = () => {
                 NAME :{product?.productname}
               </h1>
               <p className="px-5 pt-5">
-                Description : {product?.productdescription}
+                Description : {product?.productdescription.slice(0, 50)} ...
               </p>
-              <p className="px-5 pt-5">price :{product?.productprice}</p>
+              <p className="px-5 pt-5">price :${product?.productprice}</p>
+              <p className="px-5 pt-5">Available :{product?.productquantity}</p>
+              <p className="px-5 pt-5">
+                Min Order :{product?.minorderquantity} piece
+              </p>
               {/* <h4 className="px-5 pt-5">Deliverd:{DeliverdQuantiy}</h4> */}
             </div>
 
@@ -59,7 +63,7 @@ const Products = () => {
                 id="btn"
                 className=" w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-800"
               >
-                See details for purchase
+                Purchase Tools
               </button>
             </div>
           </div>

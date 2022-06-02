@@ -49,9 +49,15 @@ const Homeproduct = () => {
                 NAME :{product?.productname}
               </h1>
               <p className="px-5 pt-5">
-                Description : {product?.productdescription}
+                Description : {product?.productdescription.slice(0, 50)} ...
               </p>
-              <p className="px-5 pt-5">price :{product?.productprice}</p>
+              <p className="px-5 pt-5">price :${product?.productprice}</p>
+              <p className="px-5 pt-5">
+                Available :{product?.productquantity} piece
+              </p>
+              <p className="px-5 pt-5">
+                Min Order :{product?.minorderquantity} piece
+              </p>
               {/* <h4 className="px-5 pt-5">Deliverd:{DeliverdQuantiy}</h4> */}
             </div>
 
@@ -61,16 +67,20 @@ const Homeproduct = () => {
                 id="btn"
                 className=" w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-800"
               >
-                See details for purchase
+                Purchase Tools
               </button>
             </div>
           </div>
         ))}
       </div>
-
-      <Link className="bg-gray-800 text-white px-8 py-2 rounded" to="/products">
-        SEE ALL PARTS
-      </Link>
+      <div className="my-8">
+        <Link
+          className="bg-gray-800 text-white px-8 py-2 my-4 rounded"
+          to="/products"
+        >
+          SEE ALL PARTS
+        </Link>
+      </div>
     </div>
   );
 };

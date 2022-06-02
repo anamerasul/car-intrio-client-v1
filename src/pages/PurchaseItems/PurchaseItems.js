@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
 import auth from "../../firebase/firebase.init";
@@ -12,6 +12,7 @@ const PurchaseItems = () => {
 
   const [user] = useAuthState(auth);
   const { id } = itemsid;
+  const [error, setError] = useState("");
 
   //   console.log(id);
 
@@ -54,6 +55,8 @@ const PurchaseItems = () => {
 
     if (mydata.mypurchasequantity < +minorderquantity) {
       toast.error("Minimum order quantity is " + minorderquantity);
+      setMyprice(myprice);
+      setError("Minimum order quantity is " + minorderquantity);
 
       return;
     }
@@ -179,7 +182,7 @@ const PurchaseItems = () => {
     <div className="bg-base-100 p-10">
       <h2 className="text-4xl py-4 font-bold">Purchase Items</h2>
       <div className="py-5">
-        <label htmlFor="my-modal-6" className="btn modal-button">
+        {/* <label htmlFor="my-modal-6" className="btn modal-button">
           USER INFORMATION
         </label>
         <input type="checkbox" id="my-modal-6" class="modal-toggle" />
@@ -200,7 +203,7 @@ const PurchaseItems = () => {
               </label>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="transform bg-teal-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-full sm:w-1/2 shadow-lg mx-auto p-4">
         <div>
@@ -214,18 +217,93 @@ const PurchaseItems = () => {
           </h1>
           <p className="px-5 pt-5">Description : {productdescription}</p>
           <p className="px-5 pt-5">Price $ :{productprice}</p>
-          <h4 className="px-5 pt-5">Stock:{productquantity - stockquantity}</h4>
+          <h4 className="px-5 pt-5">
+            Available:{productquantity - stockquantity} piece
+          </h4>
 
-          <h4 className="px-5 pt-5">MinOrder:{minorderquantity}</h4>
+          <h4 className="px-5 pt-5">MinOrder: {minorderquantity} piece</h4>
         </div>
 
-        <div>
+        <h1 className="text-4xl py-4">ORDER FROM</h1>
+
+        <div className="border border-blue-900 p-4">
           <form onSubmit={handleSubmit(onSubmitpurchase)} action="">
             <div className="mt-4">
               <div>
-                <h1>Total price after purchase: ${myprice}</h1>
                 <label className="block" htmlFor="question">
-                  Puchasing items
+                  NAME:
+                </label>
+                <input
+                  type="text"
+                  readOnly
+                  value={user?.displayName}
+                  name="name"
+                  placeholder="name"
+                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "mypurchasequantity is required",
+                    },
+                  })}
+                />
+              </div>
+              <div>
+                <label className="block" htmlFor="question">
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  readOnly
+                  value={user?.email}
+                  name="email"
+                  placeholder="Email"
+                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  {...register("email", {
+                    required: {
+                      value: true,
+                      message: "email is required",
+                    },
+                  })}
+                />
+              </div>
+              <div>
+                <div>
+                  <label className="block" htmlFor="question">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="address"
+                    className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                    {...register("address", {
+                      required: {
+                        value: true,
+                        message: "address is required",
+                      },
+                    })}
+                  />
+                </div>
+                <div>
+                  <label className="block" htmlFor="question">
+                    Phone:
+                  </label>
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="phone"
+                    className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                    {...register("phone", {
+                      required: {
+                        value: true,
+                        message: "phone is required",
+                      },
+                    })}
+                  />
+                </div>
+                <label className="block" htmlFor="question">
+                  Quantity:
                 </label>
                 <input
                   type="number"
@@ -240,6 +318,10 @@ const PurchaseItems = () => {
                   })}
                 />
               </div>
+              {myprice !== 0 && (
+                <p className="px-5 pt-5">Total Price $ :{myprice}</p>
+              )}
+              <p className="text-red-700 text-md">{error}</p>
               <div className="flex">
                 <input
                   style={{ cursor: "pointer" }}
